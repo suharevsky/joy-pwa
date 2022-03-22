@@ -29,6 +29,7 @@ import { SettingsPageModule } from './pages/settings/settings.module';
 import { ProfileEditPageModule } from './pages/profile-edit/profile-edit.module';
 import { TinderGoldPageModule } from './pages/tinder-gold/tinder-gold.module';
 import { ImageModalPageModule } from './components/image-modal/image-modal.module';
+import { PhotosPageModule } from './pages/photos/photos.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,7 +49,9 @@ import { ImageModalPageModule } from './components/image-modal/image-modal.modul
       name: 'tinder',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
+    
     SharedModule,
+    PhotosPageModule,
     SettingsPageModule,
     ProfileEditPageModule,
     TinderGoldPageModule,

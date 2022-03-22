@@ -1,4 +1,4 @@
-<ion-header  #header class="header-custom">
+<ion-header #header class="header-custom mobile">
 
     <div class="segment" (click)="filterModal()">
         <ion-icon name="options-outline"></ion-icon>
@@ -18,13 +18,31 @@
       <!-- Loading screen -->
       <div *ngIf="isLoading" class="full-height safe-area-bottom">
         <ion-row class="full-height ion-justify-content-center ion-align-items-center">
-          <ripple-loader [imageUrl]="userService.getMainPhoto(userService.user, 'l', false)"></ripple-loader>
+          <ripple-loader  [imageUrl]="userService.getMainPhoto(userService.user, 'l', false)"></ripple-loader>
         </ion-row>
       </div>
 <!--
 <ion-content ion-content [fullscreen]="true" [appHideHeader]="header" scrollEvents="true">
 -->
-<ion-content [fullscreen]="true" scrollEvents="true">
+
+<!-- <div *ngIf="toogle" class="wrapper">
+	<ng-content *ngTemplateOutlet="template"></ng-content>
+</div>
+
+<ng-content *ngTemplateOutlet="!toogle?template:null"></ng-content>
+
+<ng-template #template>
+	<hello name="{{ name }}"></hello>
+</ng-template>
+<button (click)="toogle=!toogle">toogle</button> -->
+
+
+
+<ion-content *ngIf="!generalService.isDesktop()">
+    <ng-content *ngTemplateOutlet="template"></ng-content>
+</ion-content>
+    <ng-content *ngTemplateOutlet="generalService.isDesktop()?template:null"></ng-content>
+
     <!--<div class="boost-promotion">
       <ion-text color="boost">קבל עד 100 צפיות נוספות</ion-text>
 
@@ -33,28 +51,38 @@
       </ion-button>
     </div>-->
 
-    <div class="safe-area-bottom">
-        <!-- USERS -->
-        <div class="segment-view">
-            <div (click)="getPhotos()" *ngIf="warningMsg.active" class="warning message"
-                 [innerHTML]="warningMsg.message">
-            </div>
+    <ng-template #template>
+        <ion-header class="title-margin desktop" collapse="condense">
+            <ion-toolbar>
+                <ion-title class="page-title">גילוי</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <app-filter (click)="filterModal()" [filterData]="filterData"></app-filter>
 
-            <div [hidden]="isLoading" class="no-results" *ngIf="users?.length==0">
-                אין תוצאות
+        <div class="safe-area-bottom" (ionScroll)="onActivate($event)">
+            <!-- USERS -->
+            <div class="segment-view">
+                <div (click)="getPhotos()" *ngIf="warningMsg.active" class="warning message"
+                    [innerHTML]="warningMsg.message">
+                </div>
+
+                <div [hidden]="isLoading" class="no-results" *ngIf="users?.length==0">
+                    אין תוצאות
+                </div>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="6" size-md="4" sizeLg="3" *ngFor="let user of users">
+                            <person-card [user]="user"></person-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-infinite-scroll [ngStyle]="{'height.px': generalService.isDesktop() ? bottomScrollBar :''}" *ngIf="!userService.highlights.finishLoad" disabled="false" threshold="100px"
+                                    (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content
+                            loadingSpinner="bubbles"
+                            loadingText="טוען נתונים...">
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
             </div>
-            <ion-row class="users">
-                <ion-col size="6" *ngFor="let user of users">
-                    <person-card [user]="user"></person-card>
-                </ion-col>
-            </ion-row>
-            <ion-infinite-scroll *ngIf="!userService.highlights.finishLoad" disabled="false" threshold="100px"
-                                 (ionInfinite)="loadData($event)">
-                <ion-infinite-scroll-content
-                        loadingSpinner="bubbles"
-                        loadingText="טוען נתונים...">
-                </ion-infinite-scroll-content>
-            </ion-infinite-scroll>
         </div>
-    </div>
-</ion-content>
+    </ng-template>

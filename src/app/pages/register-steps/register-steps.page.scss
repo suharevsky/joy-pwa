@@ -24,6 +24,10 @@
   }
 }
 
+app-code-verification {
+  height: 100%;
+}
+
 ion-searchbar {
   text-align: right;
 }
@@ -154,4 +158,24 @@ ion-button.ion-focusable {
   --background-activated: var(--ion-color-boost);
   --background-focused: var(--ion-color-boost);
   --background-hover: var(--ion-color-boost);
+}
+
+@media (min-width: 768px) {
+  .option {
+    margin: 60px 0;
+  }
+
+  .date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .day, .month, .year {
+      display: flex;
+      align-items: center;
+      border: 1px solid;
+      padding: 7px 20px;
+      border-radius: 5px;
+    }
+  }
 }

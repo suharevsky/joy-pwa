@@ -7,6 +7,7 @@ import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user.model';
 import {SettingsService} from '../../services/user/settings/settings.service';
 import {PagePage} from '../page/page.page';
+import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
     selector: 'app-settings',
@@ -31,6 +32,7 @@ export class SettingsPage implements OnInit {
                 private themeService: ThemeService,
                 private authService: AuthService,
                 public alertController: AlertController,
+                public generalService: GeneralService,
                 public appVersion: AppVersion,
                 public userService: UserService) {
         this.userService.getUser();
@@ -48,6 +50,10 @@ export class SettingsPage implements OnInit {
             })
     }
 
+    close() {
+        this.navCtrl.back();
+    }
+
     done() {
         this.settingsService.setByUserId(this.userService.getId(), this.settings);
         this.modalCtrl.dismiss();
@@ -61,7 +67,6 @@ export class SettingsPage implements OnInit {
                 text: 'לא',
                 role: 'cancel',
                 handler: (blah) => {
-                    console.log('Confirm Cancel: blah');
                 }
             }, {
                 text: 'כן',
@@ -74,6 +79,10 @@ export class SettingsPage implements OnInit {
 
         await alert.present();
 
+    }
+
+    contactUs() {
+        window.location.href = "mailto:contact@joyme.co.il";
     }
 
     getContact() {

@@ -33,7 +33,6 @@ export class FcmService {
     requestPermission() {
         return this.afMessaging.requestToken.pipe(
             tap(token => {
-                console.log('You should store the token ', token);
                 //alert(token);
                 this.setToken(token);
             })

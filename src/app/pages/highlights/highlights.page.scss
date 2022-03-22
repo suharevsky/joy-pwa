@@ -14,6 +14,11 @@
   }
 }
 
+// .safe-area-bottom, 
+// .segment-view {
+//   height: 100%;
+// }
+
 .header-custom {
   padding: 0 24px;
   display: flex;
@@ -52,12 +57,3 @@
     background: #d85151b5;
   }
 }
-
-ion-grid,
-ion-row {
-  height: 100%;
-  overflow-y: scroll;
-}
-
-
-

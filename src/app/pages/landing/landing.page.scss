@@ -11,6 +11,7 @@
   --color: #fff;
 }
 
+
 ion-input {
   background: #6d656547;
   border-radius: 50px;
@@ -83,8 +84,14 @@ ion-button {
   text-align: center;
 }
 
+.section-brand {
+  .title.logo{
+    margin-top: 30vh;
+    text-align: center;
+  }
+}
+
 .title.logo {
-  margin-top: 30vh;
   font-size: 54px;
 }
 .subtitle {
@@ -119,3 +126,115 @@ ion-button {
     margin-top: 30vh;
   }
 }
+
+@media (min-width: 768px) {
+
+  header {
+    .inner {
+      display: flex;
+      align-items: center;
+      .title.logo {
+        cursor: pointer;
+        font-size: 38px;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .download {
+    display: flex;
+    width: 400px;
+    margin: 42px auto;
+    height: 48px;
+    justify-content: space-around;
+    a {
+      cursor: pointer;
+      display: inline-flex;
+    }
+  }
+
+  
+
+  .register-btn {
+    width: 50%;
+    margin: 65px auto;
+    height: 62px;
+    font-size: 24px;
+    font-weight: 600 !important;
+    --background: var(--ion-color-boost-gradient);
+    letter-spacing: .25px;
+  }
+
+  nav {
+    width: 100%;
+    font-size: 24px;
+    ul {
+      margin: 38px 0px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      li {
+        cursor: pointer;
+        display: block;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+
+  main.wrap {
+    max-width: 720px;
+    font-size: 18px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    .half {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      line-height: 140%;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+
+
+  main.wrap {
+    max-width: 960px;
+    h1 {
+      line-height: 133%;
+      font-size: 48px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  nav {
+    width: 50%;
+  }
+ 
+  main.wrap {
+    max-width: 1140px;
+    font-size: 24px;
+    h1 {
+      font-size: 54px;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  main.wrap {
+    max-width: 1184px;
+  }
+}
+
+

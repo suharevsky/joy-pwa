@@ -73,3 +73,15 @@ a {
 .text-sm {
   font-size: var(--font-size-sm);
 }
+
+
+ion-label {
+  font-weight: 400;
+}
+
+ion-list-header {
+  ion-label {
+    font-size: 28px;
+    font-weight: bold;
+  }
+}

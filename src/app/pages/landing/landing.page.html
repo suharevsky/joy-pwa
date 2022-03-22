@@ -1,5 +1,46 @@
+
 <ion-content force-overscroll="false" class="landing-page bg-gradient">
-    <div class="vertical-layout safe-area-bottom">
+    <div class="wrap desktop">
+    <header>
+        <div class="inner">
+            <nav>
+                <ul>
+                    <div class="logo title"><a href="/">JoyMe</a></div>
+                    <li (click)="contactUs()">צור קשר</li>
+                    <li (click)="getPage('terms-and-conditions')"><a>לתנאים</a></li>
+                    <li (click)="getPage('policy')"><a>מדיניות פרטיות</a></li>
+                    <li (click)="registerForm()"><a>כניסה</a></li>
+                    <li (click)="registerForm()"><a>הרשמה חינם</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="wrap">
+        <section class="half">
+            <h1>האתר לחילופי זוגות בישראל</h1>
+            <div class="description">
+                אידיאלי למציאת זוגות על סמך ההעדפות המיניות ואורח החיים שלך, בין אם אתה זוג, אישה או גבר.
+            </div>
+            <div class="download">
+                <a href="https://play.google.com/store/apps/details?id=il.co.joyme&hl=he&gl=il" target="_blank"><img src="/assets/img/google_play.svg"></a>
+                <a href="/"><img src="/assets/img/pwa.png"></a>
+            </div>
+            <ion-button
+                        expand="block"
+                        fill="outline"
+                        shape="round"
+                        class="button-landing ion-margin-bottom register-btn"
+                        (click)="registerForm()"
+                >
+                    הרשמה חינם!
+                </ion-button>
+        </section>
+        <section class="half">
+                <img src="/assets/img/phone.png">
+        </section>
+    </main>
+</div>
+    <div class="vertical-layout safe-area-bottom mobile">
         <div class="section-brand">
             <div class="logo title">
                 JoyMe

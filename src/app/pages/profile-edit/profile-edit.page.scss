@@ -54,3 +54,20 @@ ion-footer {
     transform: perspective(1000px) rotateY(0deg);
   }
 }
+
+@media (min-width: 768px)  {
+  ion-button {
+    --border-radius: 6px;
+    height: 60px;
+    font-size: 28px;
+    font-weight: 400 !important;
+    }
+
+  .list-custom {
+    border: none;
+    border-bottom: 1px solid #3f3f48;
+    ion-label {
+      color: #fff;
+    }
+  }
+}

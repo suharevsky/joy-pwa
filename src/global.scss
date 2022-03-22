@@ -31,6 +31,18 @@
 @import './sass/app.scss';
 @import './sass/dark.scss';
 
+ion-row {
+  width: 100%;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-checkbox {
+  --checkmark-color	: #0c0d34 !important;
+}
+
 .full-size-image {
     .swiper-wrapper {
         align-items: center;
@@ -40,7 +52,7 @@
     }
 }
 
-.transparent-modal {
+.transparent-modal, .image-modal {
     --background: rgba(0,0,0);
     &::part(content) {
         backdrop-filter: blur(12px);
@@ -57,5 +69,74 @@
     }
     to {
       opacity: 1;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+  }
+
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .dark-bg {
+    --backdrop-opacity: .85 !important;
+  }
+
+
+  @media (min-width: 768px)  {
+    .mobile {
+      display: none !important
+    }
+
+    .picker-wrapper.sc-ion-picker-ios {
+        transform: translate(-50%, -50%);
+        top: calc(50% + 350px);
+        bottom: 50%;
+    }
+
+    .desktop {
+      display: block !important;
+    }
+
+    .image-modal {
+      .modal-wrapper {
+        width: 600px;
+        height: 600px;
+      }
+    }
+
+    // removes underline title page
+    .header-ios ion-toolbar:last-of-type {
+      --border-width: 0 !important;
+    }
+
+    ion-header {
+      &.title-margin {
+        margin-bottom: 42px;
+      }
+      ion-title {
+        padding-right: 20px;
+      }
+      ion-icon {
+        font-size: 38px;
+      }
+      .page-title {
+        font-size: 56px;
+        font-weight: bold;
+        text-align: right;
+      }
+    }
+    
+  
+
+    .custom-filter-form.sc-ion-modal-ios-h{
+      --height: 740px;
     }
   }
